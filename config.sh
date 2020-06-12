@@ -116,9 +116,9 @@ dnsserversInsert() {
     echo "Inserting dnsServers values"
     local TEMPWORK
     TEMPWORK=$(tempwork)
-    jq ".dnsServers = \"${DNSSERVERS}\"" "$WORKCONFIGFILE" > "$TEMPWORK" || finish_up "Couldn't insert ntpServers value"
+    jq ".dnsServers = \"${DNSSERVERS}\"" "$WORKCONFIGFILE" > "$TEMPWORK" || finish_up "Couldn't insert dnsServers value"
     if [[ "$(jq -e '.dnsServers' "${TEMPWORK}")" == "" ]] ; then
-        finish_up "Failed to insert sshKeys into config.json."
+        finish_up "Failed to insert dnsServers into config.json."
     fi
     mv "${TEMPWORK}" "${WORKCONFIGFILE}" || finish_up "Failed to update working copy of config.json"
 }
@@ -138,7 +138,7 @@ ntpserversInsert() {
     TEMPWORK=$(tempwork)
     jq ".ntpServers = \"${NTPSERVERS}\"" "$WORKCONFIGFILE" > "$TEMPWORK" || finish_up "Couldn't insert ntpServers value"
     if [[ "$(jq -e '.ntpServers' "${TEMPWORK}")" == "" ]] ; then
-        finish_up "Failed to insert sshKeys into config.json."
+        finish_up "Failed to insert ntpServers into config.json."
     fi
     mv "${TEMPWORK}" "${WORKCONFIGFILE}" || finish_up "Failed to update working copy of config.json"
 }
@@ -155,7 +155,7 @@ sshkeysInsert() {
     echo "Inserting sshKeys values"
     local TEMPWORK
     TEMPWORK=$(tempwork)
-    local update_command=".os.sshKeys += [ "
+    local update_command=".os.sshKeys = [ "
     local -i numkeys=${#SSHKEYS[@]}
     for keyindex in "${!SSHKEYS[@]}"; do
         echo "Keyindex: ${keyindex}"
