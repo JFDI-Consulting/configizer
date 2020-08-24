@@ -54,7 +54,7 @@ declare -A UDEVRULES
 # * To add multiple rules, create multiple lines with different rulenames
 # * An example rule is just below.
 # UDEVRULES[20-something]='ACTION==\"add\", SUBSYSTEM==\"net\", ATTRS{idVendor}==\"7392\", ATTRS{idProduct}==\"7811\", NAME=\"extAP\"\n'
-
+UDEVRULES[99-adaptors]='# CC2531 Stick\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"16a8\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\r\n# CC2652 Board\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"bef3\", ENV{ID_USB_INTERFACE_NUM}==\"00\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\r\n# Aeotech ZWave adapter\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0658\", ATTRS{idProduct}==\"200\", MODE=\"0666\", SYMLINK+=\"usbzwave\"\r\n'
 # Whether or not restart the engine if the supervisor restart failed.
 FORCE_SUPERVISOR_RESTART="no"
 
