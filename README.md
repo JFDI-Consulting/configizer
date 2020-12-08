@@ -15,6 +15,10 @@ You'll need the following:
    * [Generate the key](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
    * [Install the key on Balena Dashboard](https://www.balena.io/docs/learn/manage/ssh-access/#add-an-ssh-key-to-balenacloud) 
 
+If you want to add udev rules, you'll need something by which to identify devices... like the `idProduct` and `idVendor` fields from the device info. You can find these by plugging in the device, finding it in `/dev/` and querying it using `udevadm`, thus:
+
+`udevadm info -a -p $(udevadm info -q path -n /dev/<devicepath>)`
+
 ## Usage
 
 * `config.sh` is the script that will be run on the device. In the headers of that file, there are a number of settings, modify any of them that you want to use, leave the rest as it is. Only those modifications will be run on the device that are the non-default values. Each entry has a help text to assist in filling it out
