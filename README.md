@@ -7,6 +7,14 @@ Any entry that the supervisor learns to support will be removed from this tool, 
 
 See the full list of the supported entries in the [meta-balena README][meta-balena readme].
 
+## Prerequisites
+
+You'll need the following:
+1. [balena-cli installed in Linux/WSL](https://jfdi.sharepoint.com/sites/techtalk/_layouts/OneNote.aspx?id=%2Fsites%2Ftechtalk%2FShared%20Documents%2FDocker%2FDocker&wd=target%28Balena.one%7C99A305B8-0E3C-48D2-94D8-E81607D55772%2FInstalling%20Balena-CLI%20in%20WSL%7C7B266EF2-CA2E-4E8A-BFDF-D44AB7D3D9AB%2F%29)
+2. Your virtual machine's SSH key installed on Balena Dashboard
+   * [Generate the key](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
+   * [Install the key on Balena Dashboard](https://www.balena.io/docs/learn/manage/ssh-access/#add-an-ssh-key-to-balenacloud) 
+
 ## Usage
 
 * `config.sh` is the script that will be run on the device. In the headers of that file, there are a number of settings, modify any of them that you want to use, leave the rest as it is. Only those modifications will be run on the device that are the non-default values. Each entry has a help text to assist in filling it out
