@@ -54,9 +54,18 @@ declare -A UDEVRULES
 # * To add multiple rules, create multiple lines with different rulenames
 # * An example rule is just below.
 # UDEVRULES[20-something]='ACTION==\"add\", SUBSYSTEM==\"net\", ATTRS{idVendor}==\"7392\", ATTRS{idProduct}==\"7811\", NAME=\"extAP\"\n'
-UDEVRULES[99-adaptors]='# CC2531 Stick\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"16a8\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\r\n# CC2652 Board\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"bef3\", ENV{ID_USB_INTERFACE_NUM}==\"00\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\r\n# Aeotech ZWave adapter\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0658\", ATTRS{idProduct}==\"200\", MODE=\"0666\", SYMLINK+=\"usbzwave\"\r\n'
+# UDEVRULES[99-adaptors]='# CC2531 Stick\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"16a8\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\r\n# CC2652 Board\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"bef3\", ENV{ID_USB_INTERFACE_NUM}==\"00\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\r\n# Aeotech ZWave adapter\r\nKERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0658\", ATTRS{idProduct}==\"200\", MODE=\"0666\", SYMLINK+=\"usbzwave\"\r\n'
+UDEVRULES[99-adaptors]=''
+UDEVRULES[99-ZZH]=''
+UDEVRULES[99-SlaeshCC2652]=''
+UDEVRULES[99-CC2652-TI]='KERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"bef3\", ENV{ID_USB_INTERFACE_NUM}==\"00\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\n'
+UDEVRULES[99-AeotechZWave]='KERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0658\", ATTRS{idProduct}==\"0200\", MODE=\"0666\", GROUP=\"root\", SYMLINK+=\"usbzwave\"\n'
+UDEVRULES[99-CC2531]='KERNEL==\"ttyACM*\", ATTRS{idVendor}==\"0451\", ATTRS{idProduct}==\"16a8\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\n'
+UDEVRULES[99-CC2652-Slaesh]='KERNEL==\"ttyUSB*\", ATTRS{idVendor}==\"10c4\", ATTRS{idProduct}==\"ea60\", ENV{ID_USB_INTERFACE_NUM}==\"00\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\n'
+UDEVRULES[99-CC2652-ZZH]='KERNEL==\"ttyUSB*\", ATTRS{idVendor}==\"1a86\", ATTRS{idProduct}==\"7523\", ENV{ID_USB_INTERFACE_NUM}==\"00\", MODE=\"0666\", SYMLINK+=\"usbzigbee\"\n'
+
 # Whether or not restart the engine if the supervisor restart failed.
-FORCE_SUPERVISOR_RESTART="no"
+FORCE_SUPERVISOR_RESTART="yes"
 
 ###
 # End of script configuration
